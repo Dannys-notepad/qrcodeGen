@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qrcodeGen API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        hr{
+          border-color: #e5e9fd;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+        a{
+          color: #0056b3;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .endpoint {
+            margin-bottom: 20px;
+        }
+        .endpoint h2 {
+            margin: 0;
+            padding: 0;
+            color: #0056b3;
+        }
+        .endpoint p {
+            margin: 5px 0;
+        }
+        .request, .response {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 5px 0;
+            overflow-x: auto;
+        }
+        .code {
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .request {
+            border-left: 5px solid #007bff;
+        }
+        .response {
+            border-left: 5px solid #28a745;
+        }
+        footer{
+          margin-top: 20px;
+          text-align: center;
+          color: #0056b3;
+        }
+        @media(min-width: 768px){
+          body{
+            padding-left: 200px;
+            padding-right: 200px;
+          }
+      }
+    </style>
+</head>
+<body>
+    <h1>API Documentation</h1>
+    <div class="endpoint">
+      <h2>About API</h2>
+      <p><b>qrcodeGen</b> is a qrcode generating API, request can be sent via CURL, Postman or any other API client, and also example illustrated below is in CURL</p>
+    </div>
+    <div class="endpoint">
+        <h2>POST /api/v1/qrcode/gen</h2>
+        <p><strong>Description:</strong> Generates a qrcode image with the text provided in request body.</p>
+        <div class="request">
+            <h3>Request</h3>
+            <p class="code">POST /api/v1/qrcode/gen\nContent-Type: application/json\n\n{\n  "text": "www.google.com"\n}</p>
+        </div>
+        <div class="response">
+            <h3>Response</h3>
+            <p class="code">HTTP/1.1 201 Created\nContent-Type: application/json\n\n[{"message":"qrcode generated,"imgname":"qrcode_yw6h.png"}]</p>
+        </div>
+    </div>
+    
+    <div class="endpoint">
+        <h2>GET /api/v1/qrcode/image/{imagename}</h2>
+        <p><strong>Description:</strong> Displays the specified qrcode image on the webpage.</p>
+        <div class="request">
+            <h3>Request</h3>
+            <p class="code">GET /api/v1/qrcode/image/qrcode_yw6h.png</p>
+        </div>
+        <div class="response">
+            <h3>Response</h3>
+            <p class="code">HTTP/1.1 201 Created\nContent-Type: img/png</p>
+        </div>
+    </div>
+    <hr>
+    <footer>
+      <p>API's open source so if you've got a feature you'd love to add or view source code feel free to.  <b><a href="https://github.com/Dannys-notepad/qrcodeGen" target="_blank">Link to repo</a></b>, don't forget to give the repo a start :)</p>
+      <p>Copyright Dannysnotepad&copy; 2024</p>
+    </footer>
+</body>
+</html>
