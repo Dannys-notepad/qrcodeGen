@@ -19,4 +19,4 @@ app.use('/qrcodeImages', express.static(path.join(__dirname, './qrcodeImages')))
 app.get('/', index)
 app.use('/api/v2/qrcode', qrcode)
 
-app.listen(PORT, () => console.log(`Server up and running on port ${PORT}`))
+app.listen(PORT, () => console.log(`Server up and running on port ${PORT}, directory name is ${__dirname}`))
