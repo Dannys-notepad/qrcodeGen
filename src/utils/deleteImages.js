@@ -29,4 +29,9 @@ const deleteImages = (folderPath) => {
   }
 }
 
+let pat = 'hq'
+let filehq = 'hq.cs'
+
+//console.log(path.join(pat, filehq))
+
 module.exports = deleteImages
