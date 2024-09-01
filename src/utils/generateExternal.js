@@ -16,7 +16,7 @@ const generateExternal = (data, filename, id, res) => {
       if (err) throw err;
     res.status(201).json({status: 'success',
       message: 'qrcode image generated, the below link can be used externally',
-      imgurl: `https://qrcode-gen-3d72.onrender.com/api/v2/qrcode/image/${filename}`
+      imgurl: `https://qrcode-gen-pad.onrender.com/api/v2/qrcode/image/${filename}`
       })
       let schema = {
         id,
