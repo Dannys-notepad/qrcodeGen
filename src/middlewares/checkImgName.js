@@ -7,7 +7,7 @@ const checkImgName = (req, res, next) => {
   if(fs.existsSync(path)){
     next()
   }else{
-    Error('Qrcode image name does not exist', 400, res)
+    Error('the qrcode image name.entered does not exist, maybe it might have been automatically deleted by the server because of CPU management', 400, res)
   }
 }
 

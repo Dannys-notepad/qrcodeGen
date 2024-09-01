@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qrcode</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+        .container{
+          width: 200px;
+          height: 200px;
+          background-color: #fff;
+          border-radius: 20px;
+          margin: 50px auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 50px;
+        }
+        .container img{
+          width: 98%;
+          height: 98%;
+          border-radius: 20px;
+        }
+        /*
+        @media(min-width: 768px){
+          body{
+            padding-left: 200px;
+            padding-right: 200px;
+          }
+      }*/
+    </style>
+</head>
+<body>
+    <div class="container">
+      <img src="<%= url %>">
+    </div>
+</body>
+</html>

@@ -3,31 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qrcodeGen API Documentation</title>
+    <title>qrcodeGen v2 API Documentation</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            color: #333;
         }
         hr{
-          border-color: #e5e9fd;
+          border-color: #ccada4;
           margin-top: 10px;
           margin-bottom: 10px;
         }
         a{
-          color: #0056b3;
+          color: #333;
         }
         h1 {
-            color: #007bff;
+            color: #333;
+        }
+        h2{
+          color: #666;
+          margin-bottom: 10px;
+        }
+        ul{
+          list-style: none;
+        }
+        li{
+          margin-bottom: 10px;
+        }
+        header{
+          border-bottom: 2px solid #ccada4;
+          margin-bottom: 40px;
+        }
+        .code{
+          font-size: 16px;
+        }
+        .d{
+          font-size: 16px;
+        }
+        .p{
+          font-size: 18px;
         }
         .endpoint {
             margin-bottom: 20px;
         }
-        .endpoint h2 {
+        .endpoint{
             margin: 0;
             padding: 0;
-            color: #0056b3;
         }
         .endpoint p {
             margin: 5px 0;
@@ -53,46 +74,113 @@
         footer{
           margin-top: 20px;
           text-align: center;
-          color: #0056b3;
         }
         @media(min-width: 768px){
           body{
             padding-left: 200px;
             padding-right: 200px;
           }
-      }
+        }
     </style>
 </head>
 <body>
-    <h1>API Documentation</h1>
+    <header>
+      <h1>API Documentation</h1>
+    </header>
     <div class="endpoint">
-      <h2>About API</h2>
-      <p><b>qrcodeGen</b> is a qrcode generating API, request can be sent via CURL, Postman or any other API client, and also example illustrated below is in CURL</p>
+      <h2>About qrcodeGen v2 API</h2>
+      <p class="p"><b>qrcodeGen</b> is a qrcode generating API, request can be sent via CURL, a Browser, Postman or any other API client, and also example illustrated below is in CURL</p>
+      <h2>qrcodeGen v2 features</h2>
+      <p class="p">
+        <b>qrcodeGen</b> has been updated and new cool fetures has been added to it, generating of qrcodes based on your needs be it text, url, a wifi network information and others, also support for external link has been added, meaning you can generate qrcode image links and use them externally e.g your HTML img tag.
+      </p>
     </div>
     <div class="endpoint">
-        <h2>POST /api/v1/qrcode/gen</h2>
-        <p><strong>Description:</strong> Generates a qrcode image with the text provided in request body.</p>
+        <h2>GET /api/v2/qrcode/gen</h2>
+        <p class="p"><strong>Description:</strong> Generates a qrcode image with the text provided in request body.</p>
+        <h2>List of query options for this endpoint</h2>
+        <h3><code>?type</code></h3>
+        <p>States the type of qrcode you want to generate</p>
+        <p><b>Example:</b> <code class="code">/api/v2/qrcode/gen?type=url</code></p>
+        <h3>The <code>?type</code> options</h3>
+        <ul>
+          <li>
+            <details>
+            <summary><code class="code">?type=text</code></summary>
+            <p class="d">Declears a text qrcode</p>
+            <p><b>Example:</b> <code class="code">/api/v2/qrcode/gen?type=url&text=Hello-World</code></p>
+            <p>Returns the generated qrcode on the webpage</p>
+        </details>
+        </li>
+          <li>
+            <details>
+            <summary><code class="code">?type=url</code></summary>
+            <p class="d">Declears a url qrcode</p>
+            <p><b>Example:</b> <code class="code">/api/v2/qrcode/gen?type=url&url=www.google.com</code></p>
+            <p>Returns the generated qrcode on the webpage</p>
+        </details>
+        </li>
+          <li>
+            <details>
+            <summary><code class="code">?type=wifi</code></summary>
+            <p class="d">Declears a wifi network information qrcode</p>
+            <p><b>Example:</b> <code class="code">/api/v2/qrcode/gen?type=wifi&wifiname=Aitel_mifi_box108&wifipassword=9aug56gy</code></p>
+            <p>Returns the generated qrcode on the webpage</p>
+        </details>
+        </li>
+          <li>
+            <details>
+            <summary><code class="code">?type=vcard</code></summary>
+            <p class="d">Declears a business card information qrcode</p>
+            <p><b>Example:</b> <code class="code">/api/v2/qrcode/gen?type=vcard&companyname=Demi_Lounge&companyaddress=No.2_Cray_Street&companyemail=demilounge@gmail.com</code></p>
+            <p>Returns the generated qrcode on the webpage</p>
+        </details>
+        </li>
+        </ul>
         <div class="request">
             <h3>Request</h3>
-            <p class="code">POST /api/v1/qrcode/gen\nContent-Type: application/json\n\n{\n  "text": "www.google.com"\n}</p>
+            <p><b>GET</b></p>
+            <p class="code">curl "https://qrcode-gen-3d72.onrender.com/api/v2/qrcode/gen?type=url&text=Hello-World"</p>
         </div>
         <div class="response">
             <h3>Response</h3>
-            <p class="code">HTTP/1.1 201 Created\nContent-Type: application/json\n\n[{"message":"qrcode generated,"imgname":"qrcode_yw6h.png"}]</p>
+            <p class="code">HTTP/1.1 201 Created</p>
         </div>
     </div>
     
     <div class="endpoint">
-        <h2>GET /api/v1/qrcode/image/{imagename}</h2>
-        <p><strong>Description:</strong> Displays the specified qrcode image on the webpage.</p>
+        <h2>How to generate a qrcode image to be used externally</h2>
+        <p class="p">It still uses the same <code class="code">?type</code> query</p>
         <div class="request">
             <h3>Request</h3>
-            <p class="code">GET /api/v1/qrcode/image/qrcode_yw6h.png</p>
+            <p class="code">curl "https://qrcode-gen-3d72.onrender.com/api/v2/qrcode/gen?type=external&data=Arandomdata"</p>
         </div>
         <div class="response">
             <h3>Response</h3>
-            <p class="code">HTTP/1.1 201 Created\nContent-Type: img/png</p>
+            <p class="code">HTTP/1.1 201 Created</p>
         </div>
+        <h3>Json response returned</h3>
+        <div class="response">
+          <p class="code">
+  {
+    status: 'success',
+    message: 'qrcode image generated, the below link can be used externally',
+    imgurl: `https://qrcode-gen-3d72.onrender.com/api/v2/qrcode/image/qrcode_ju7s.png`
+}
+        </code></p>
+        </div>
+    <h3>How to use in HTML img tag</h3>
+        <div class="response">
+          <p class="code">
+< img src="https://qrcode-gen-3d72.onrender.com/api/v2/qrcode/image/qrcode_ju7s.png" alt="qrcode image" >
+          </p>
+        </div>
+      <p>
+        And thats all, I hope you enjoy using this API :).
+      </p>
+      <p>
+        <b>For Devs:I hope you utilize this API to the fullest</b>
+      </p>
     </div>
     <hr>
     <footer>

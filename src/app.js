@@ -13,12 +13,10 @@ const qrcode = require('./routes/qrcode')
 
 app.set('view engine', 'ejs')
 
-//app.use(apiLimiter)
 app.use(express.urlencoded({extended: true}))
-//app.use(express.static('views'))
 app.use('/qrcodeImages', express.static(path.join(__dirname, './qrcodeImages')))
 
 app.get('/', index)
-app.use('/api/v1/qrcode', qrcode)
+app.use('/api/v2/qrcode', qrcode)
 
 app.listen(PORT, () => console.log(`Server up and running on port ${PORT}`))
