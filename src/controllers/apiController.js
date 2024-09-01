@@ -4,7 +4,7 @@ const deleteImages = require('../utils/deleteImages.js')
 
 const genQrcode = async (req, res) => {
   try{
-    const folderPath = './src/qrcodeImages'
+    const folderPath = './src/src/qrcodeImages'
     deleteImages(folderPath)
     let type = req.query.type
     let object = Object.keys(req.query).length-1
@@ -35,7 +35,7 @@ const genQrcode = async (req, res) => {
 
 const returnURL = async (req, res) => {
   try{
-    const folderPath = './src/qrcodeImages'
+    const folderPath = './src/src/qrcodeImages'
     deleteImages(folderPath)
     let data = await req.params.imgname
     let func = await qrCode.externalURL(data, res)
