@@ -98,7 +98,7 @@
     </div>
     <div class="endpoint">
         <h2>GET /api/v2/qrcode/gen</h2>
-        <p class="p"><strong>Description:</strong> Generates a qrcode image with the text provided in request body.</p>
+        <p class="p"><strong>Description:</strong> Generates a qrcode with data provided in request query.</p>
         <h2>List of query options for this endpoint</h2>
         <h3><code>?type</code></h3>
         <p>States the type of qrcode you want to generate</p>
@@ -141,7 +141,7 @@
         <div class="request">
             <h3>Request</h3>
             <p><b>GET</b></p>
-            <p class="code">curl "https://qrcode-gen-pad.onrender.com/api/v2/qrcode/gen?type=url&text=Hello-World"</p>
+            <p class="code">curl "https://http://localhost:8000/api/v2/qrcode/gen?type=url&text=Hello-World"</p>
         </div>
         <div class="response">
             <h3>Response</h3>
@@ -155,7 +155,7 @@
         <p class="p">It still uses the same <code class="code">?type</code> query</p>
         <div class="request">
             <h3>Request</h3>
-            <p class="code">curl "https://qrcode-gen-pad.onrender.com/api/v2/qrcode/gen?type=external&data=Arandomdata"</p>
+            <p class="code">curl "https://http://localhost:8000/api/v2/qrcode/gen?type=external&data=Arandomdata"</p>
         </div>
         <div class="response">
             <h3>Response</h3>
@@ -167,14 +167,14 @@
   {
     status: 'success',
     message: 'qrcode image generated, the below link can be used externally',
-    imgurl: `https://qrcode-gen-pad.onrender.com/api/v2/qrcode/image/qrcode_ju7s.png`
+    imgurl: `https://http://localhost:8000/api/v2/qrcode/image/qrcode_ju7s.png`
 }
         </code></p>
         </div>
     <h3>How to use in HTML img tag</h3>
         <div class="response">
           <p class="code">
-< img src="https://qrcode-gen-pad.onrender.com/api/v2/qrcode/image/qrcode_ju7s.png" alt="qrcode image" >
+< img src="https://http://localhost:8000/api/v2/qrcode/image/qrcode_ju7s.png" alt="qrcode image" >
           </p>
         </div>
       <p>
